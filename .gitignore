@@ -132,4 +132,4 @@ dmypy.json
 *.tfvars
 *.tfstate*
 **/.terraform/*
-*
+
