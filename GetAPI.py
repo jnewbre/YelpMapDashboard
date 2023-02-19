@@ -1,7 +1,8 @@
-import requests
 from dotenv import load_dotenv
 import os
+import requests
 import json
+import pandas as pd
 
 load_dotenv()
 
@@ -25,5 +26,6 @@ r = requests.get(
     headers = headers
 )
 
-r.json()
-
+ 
+df = pd.json_normalize(r.json()['businesses'])
+df
