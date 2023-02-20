@@ -19,5 +19,9 @@ variable "instance_type" {
 variable "repo_url" {
   description = "Repository url to clone into production machine"
   type        = string
-  default     = "https://github.com/jnewbre/YelpMapDashboard.git"
+}
+
+variable "alert_email_id" {
+  description = "Email for alerts"
+  type        = string
 }
