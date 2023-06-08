@@ -133,3 +133,7 @@ dmypy.json
 *.tfstate*
 **/.terraform/*
 
+# Misc files
+gpg
+*.txt
+*.pem

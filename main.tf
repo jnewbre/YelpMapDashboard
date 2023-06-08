@@ -41,6 +41,7 @@ resource "aws_security_group" "ports_security_group" {
     }
 }
 
+
 resource "tls_private_key" "custom_key" {
     algorithm = "RSA"
     rsa_bits  = 4096
@@ -51,8 +52,15 @@ resource "aws_key_pair" "generated_key" {
     public_key      = tls_private_key.custom_key.public_key_openssh
 }
 
+resource "local_file" "pem_file" {
+    filename = pathexpand("~/.ssh/${var.ssh_key_name}.pem")
+    file_permission = "600"
+    directory_permission = "700"
+    sensitive_content = tls_private_key.custom_key.private_key_pem
+}
+
 resource "aws_instance" "map_ec2" {
-    ami             = "ami-0557a15b87f6559cf"
+    ami             = "ami-053b0d53c279acc90"
     instance_type   = var.instance_type
 
     key_name        = aws_key_pair.generated_key.key_name
@@ -63,41 +71,41 @@ resource "aws_instance" "map_ec2" {
     }
 
   user_data = <<EOF
-        #!/bin/bash
+#!/bin/bash
 
-        echo "-------------------------START SETUP---------------------------"
-        sudo apt-get -y update
+echo "-------------------------START SETUP---------------------------"
+sudo apt-get -y update
 
-        sudo apt-get -y install \
-        ca-certificates \
-        curl \
-        gnupg \
-        lsb-release
+sudo apt-get -y install \
+ca-certificates \
+curl \
+gnupg \
+lsb-release
 
-        sudo apt -y install unzip
+sudo apt -y install unzip
 
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-        echo \
-        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-        sudo apt-get -y update
-        sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-        sudo chmod 666 /var/run/docker.sock
+sudo apt-get -y update
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo chmod 666 /var/run/docker.sock
 
-        sudo apt install make
+sudo apt install make
 
-        echo 'Clone git repo to EC2'
-        cd /home/ubuntu && git clone ${var.repo_url}
+echo 'Clone git repo to EC2'
+cd /home/ubuntu && git clone ${var.repo_url}
 
-        echo 'CD to data_engineering_project_template directory'
-        cd data_engineering_project_template
+echo 'CD to GitHub directory'
+cd YelpMapDashboard
 
-        echo 'Start containers & Run db migrations'
-        make up
+echo 'Start containers & Run db migrations'
+make up
 
-        echo "-------------------------END SETUP---------------------------"
-    EOF
+echo "-------------------------END SETUP---------------------------"
+EOF
 }
 
 resource "aws_budgets_budget" "ec2" {
