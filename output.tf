@@ -9,3 +9,8 @@ output "private_key" {
   sensitive   = true
 }
 
+output "instance_public_ip" {
+  description = "Public IP address of the EC2 instance"
+  value       = aws_instance.map_ec2.public_ip
+}
+
