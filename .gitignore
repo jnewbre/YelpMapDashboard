@@ -137,3 +137,4 @@ dmypy.json
 gpg
 *.txt
 *.pem
+*logs
