@@ -135,6 +135,6 @@ dmypy.json
 
 # Misc files
 gpg
-*.txt
+notes.txt
 *.pem
 *logs
