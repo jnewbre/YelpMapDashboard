@@ -101,6 +101,8 @@ cd /home/ubuntu && git clone ${var.repo_url}
 echo 'CD to GitHub directory'
 cd YelpMapDashboard
 
+sudo chown -R ubuntu:ubuntu .
+
 echo 'Start containers & Run db migrations'
 make up
 
