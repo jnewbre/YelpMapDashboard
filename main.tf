@@ -107,7 +107,11 @@ mkdir bobby
 
 make up
 
-mkdir dog
+docker exec -it postgres_container  bash
+psql postgresql://${var.db_username}:${var.db_password}@localhost:5432/test_db
+CREATE SCHEMA dbo;
+CREATE TABLE dbo.restaurants (name varchar(50), address varchar(50));
+
 
 echo "-------------------------END SETUP---------------------------"
 EOF
