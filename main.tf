@@ -109,6 +109,7 @@ make up
 
 docker exec -it postgres_container  bash
 psql postgresql://root:root@localhost:5432/test_db
+\c test_db
 CREATE SCHEMA dbo;
 CREATE TABLE dbo.restaurants (name varchar(50), address varchar(50));
 
