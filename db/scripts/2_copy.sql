@@ -1,1 +1,1 @@
-COPY food FROM '/data/data.csv' DELIMITER ',' CSV HEADER;
+COPY dbo.food FROM '/data/data.csv' DELIMITER ',' CSV HEADER;

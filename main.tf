@@ -111,6 +111,8 @@ mkdir bobby
 
 echo "-------------------------END SETUP---------------------------"
 EOF
+
+#user_data_replace_on_change = true
 }
 
 resource "aws_budgets_budget" "ec2" {

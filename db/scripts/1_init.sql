@@ -1,3 +1,5 @@
+CREATE SCHEMA dbo;
+
 CREATE TABLE food
 (
    index int
