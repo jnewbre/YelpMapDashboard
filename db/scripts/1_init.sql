@@ -14,15 +14,15 @@ CREATE TABLE food
    ,phone numeric
    ,display_phone varchar(300)
    ,distance decimal
-   ,coordinates.latitude decimal
-   ,coordinates.longitude decimal
-   ,location.address1 varchar(300)
-   ,location.address2 varchar(300)
-   ,location.address3 varchar(300)
-   ,location.city varchar(300)
-   ,location.zip_code int
-   ,location.country varchar(300)
-   ,location.state varchar(300)
-   ,location.display_address varchar(300)
+   ,latitude decimal
+   ,longitude decimal
+   ,address1 varchar(300)
+   ,address2 varchar(300)
+   ,address3 varchar(300)
+   ,city varchar(300)
+   ,zip_code int
+   ,country varchar(300)
+   ,state varchar(300)
+   ,display_address varchar(300)
    ,price varchar(300)
 );
