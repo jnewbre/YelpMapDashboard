@@ -103,8 +103,11 @@ cd YelpMapDashboard
 
 sudo chown -R ubuntu:ubuntu .
 
-echo 'Start containers & Run db migrations'
+mkdir bobby
+
 make up
+
+mkdir dog
 
 echo "-------------------------END SETUP---------------------------"
 EOF
