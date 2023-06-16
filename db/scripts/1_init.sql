@@ -1,6 +1,6 @@
 CREATE SCHEMA dbo;
 
-CREATE TABLE food
+CREATE TABLE dbo.food
 (
    index int
    ,id varchar(300)
