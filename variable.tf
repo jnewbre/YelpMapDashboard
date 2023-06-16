@@ -31,3 +31,13 @@ variable "alert_email_id" {
   description = "Email for alerts"
   type        = string
 }
+
+variable "db_username" {
+  description = "Username for Postgres database"
+  type        = string
+}
+
+variable "db_password" {
+  description = "Username for Postgres database"
+  type        = string
+}
