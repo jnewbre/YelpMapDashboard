@@ -1,8 +1,8 @@
-version: "3.8"
+version: "3.3"
 services:
   db:
     container_name: postgres_container
-    image: postgres
+    build: ./db
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/data
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4

@@ -1,0 +1,1 @@
+COPY food FROM '/data/data.csv' DELIMITER ',' CSV HEADER;
