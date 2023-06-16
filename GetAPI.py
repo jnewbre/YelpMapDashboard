@@ -28,4 +28,4 @@ r = requests.get(
 
  
 df = pd.json_normalize(r.json()['businesses'])
-df
+df.to_csv('.\data\data.csv')
