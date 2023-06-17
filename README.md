@@ -7,5 +7,6 @@ Architecture:
 - Postgres
 - Metabase
 
-Dashboard:
+Dashboard: \
+&nbsp;
 ![alt text](https://github.com/jnewbre/YelpMapDashboard/blob/main/data/MetabaseDashboardExample.png)
