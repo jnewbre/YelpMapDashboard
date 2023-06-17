@@ -3,6 +3,7 @@ import os
 import requests
 import json
 import pandas as pd
+from datetime import datetime
 
 load_dotenv()
 
@@ -28,4 +29,6 @@ r = requests.get(
 
  
 df = pd.json_normalize(r.json()['businesses'])
-df.to_csv('.\data\data.csv')
+df['DateAdded'] = datetime.now()
+
+df.to_csv('.\data\stagedata.csv')
