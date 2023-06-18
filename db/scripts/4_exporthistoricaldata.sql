@@ -1,2 +1,2 @@
 COPY dbo.food
-TO '/data/historicaldata.csv' DELIMETER ',' CSV HEADER;
+TO '/data/historicaldata.csv' DELIMITER ',' CSV HEADER;
