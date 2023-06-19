@@ -103,6 +103,12 @@ cd YelpMapDashboard
 
 sudo chown -R ubuntu:ubuntu .
 
+make airflow
+
+make up
+
+mkdir bobby
+
 echo "-------------------------END SETUP---------------------------"
 EOF
 
