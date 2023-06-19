@@ -1,7 +1,7 @@
 airflow:
 	docker compose up airflow-init
 up:
-	docker compose --env-file .env up 
+	docker compose --env-file env up 
 down:
 	docker compose down --volumes
 rmi:
