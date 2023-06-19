@@ -103,10 +103,6 @@ cd YelpMapDashboard
 
 sudo chown -R ubuntu:ubuntu .
 
-make up
-
-mkdir bobby
-
 echo "-------------------------END SETUP---------------------------"
 EOF
 
