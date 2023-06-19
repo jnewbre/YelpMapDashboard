@@ -1,3 +1,7 @@
+airflow:
+	docker compose up airflow-init
+perms:
+	sudo mkdir -p logs plugins temp dags && sudo chmod -R u=rwx,g=rwx,o=rwx logs plugins temp dags tests
 up:
 	docker compose --env-file .env up 
 down:
