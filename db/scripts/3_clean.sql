@@ -1,3 +1,9 @@
+--Cleaning json for categories
+--update stg.food set categories = regexp_replace(categories, '\[|\]','', 'g');
+--update dbo.food set categories = regexp_replace(categories, '\[|\]','', 'g');
+--update stg.food set categories = regexp_replace(categories, '''','"', 'g');
+
+
 INSERT INTO dbo.food
     (
         index 
@@ -58,3 +64,4 @@ FROM dbo.food hist
 RIGHT JOIN stg.food new
     ON hist.alias = new.alias
     WHERE hist.alias IS NULL;
+
